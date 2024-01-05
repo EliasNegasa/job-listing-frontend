@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AppBar />
+    <app-bar />
     <header class="bg-cyan-dark mt-[0.5px]">
       <img class="w-full" src="../assets/bg-header-desktop.svg" alt="Header Image" />
     </header>
@@ -8,5 +8,5 @@
 </template>
 
 <script setup>
-import AppBar from './AppBar.vue'
+import AppBar from '@/components/AppBar.vue'
 </script>
