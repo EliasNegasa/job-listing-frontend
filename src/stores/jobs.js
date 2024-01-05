@@ -17,7 +17,9 @@ export const useJobStore = defineStore('job', () => {
     totalPage: 1
   })
 
-  async function fetchJobs(url = 'http://localhost:3000/api/jobs') {
+  const baseUrl = import.meta.env.VITE_APP_API_URL
+
+  async function fetchJobs(url = `${baseUrl}/api/jobs`) {
     isLoading.value = true
 
     try {
@@ -28,15 +30,14 @@ export const useJobStore = defineStore('job', () => {
       metadata.limit = data.metadata.limit
       metadata.page = data.metadata.page
       metadata.total = data.metadata.total
-      metadata.totalPage = Math.ceil(metadata.total / metadata.limit)
-      console.log('Links', data.metadata)
+      let dividePages = Math.ceil(metadata.total / metadata.limit)
+      metadata.totalPage = dividePages == 0 ? 1 : dividePages
     } catch (err) {
       error.value = err.response.data.message || 'Error'
     } finally {
       isLoading.value = false
     }
   }
-
 
   return { jobs, fetchJobs, error, isLoading, links, metadata }
 })
