@@ -1,10 +1,10 @@
 <script setup>
-import NotFound from '../components/NotFound.vue';
+import NotFound from '@/components/NotFound.vue';
 
 </script>
 
 <template>
     <main>
-        <NotFound />
+        <not-found />
     </main>
 </template>
